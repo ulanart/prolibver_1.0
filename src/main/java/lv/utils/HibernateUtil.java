@@ -1,8 +1,5 @@
 package lv.utils;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
 public class HibernateUtil 
 {
 	private static final SessionFactory sessionFactory;
@@ -10,7 +7,7 @@ public class HibernateUtil
 	{
 		try
 		{
-			sessionFactory = new Configuration().configure().buildSessionFactory();
+			sessionFactory = new Configuration().configure().buildSessionFactory(null);
 		}
 		catch(Throwable ex)
 		{
