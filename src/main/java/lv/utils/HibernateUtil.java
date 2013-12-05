@@ -1,5 +1,11 @@
 package lv.utils;
 
+import lv.Models.Article;
+import lv.Models.User;
+
+import org.hibernate.cfg.Configuration;
+import org.hibernate.SessionFactory;
+
 public class HibernateUtil 
 {
 	private static final SessionFactory sessionFactory;
@@ -7,7 +13,12 @@ public class HibernateUtil
 	{
 		try
 		{
-			sessionFactory = new Configuration().configure().buildSessionFactory(null);
+			Configuration configuration = new Configuration();
+			configuration.configure();
+			configuration.addAnnotatedClass(User.class);
+			configuration.addAnnotatedClass(Article.class);
+			
+			sessionFactory = new Configuration().configure().buildSessionFactory();
 		}
 		catch(Throwable ex)
 		{
